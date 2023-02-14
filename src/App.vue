@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <div class="page-container">
     <!-- Navbar -->
     <the-navbar></the-navbar>
 
     <!-- Page Content -->
-    <div class="container">
+    <div class="container content-wrap">
       <div class="row">
         <the-menu></the-menu>
 
@@ -46,7 +46,18 @@ export default {
 </script>
 
 <style>
-#app {
-  padding-top: 55px;
-}
+  #app {
+    padding-top: 6vh;
+  }
+</style>
+
+<style scoped>
+  .page-container {
+    position: relative;
+    min-height: 94vh;
+  }
+
+  .content-wrap {
+    padding-bottom: 139px    /* Footer height */
+  }
 </style>
