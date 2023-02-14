@@ -15,7 +15,7 @@
           </div>
         </div>
         <h5>Price: $ {{ product.real_price }}</h5>
-        <p class="card-text">{{ product.tx_description }}</p>
+        <!-- <p class="card-text">{{ product.tx_description }}</p> -->
         <h8>On Stock: {{ product.nu_stock }} remaining</h8>
       </div>
       <div class="card-footer">
@@ -42,3 +42,12 @@ export default {
   ]
 };
 </script>
+
+<style scoped>
+  .col {
+    padding: 0px;
+  }
+  #col-card {
+    margin-bottom: 20px;
+  }
+</style>

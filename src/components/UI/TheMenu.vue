@@ -7,6 +7,7 @@
       <a href="/users" class="list-group-item text-danger">Account</a>
       <a href="/orders" class="list-group-item text-danger">Orders</a>
     </div>
+  </div>
 </template>
 
 <script>
