@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
       <!--Brokenerk-->
-      <a class="nav-link text-white" href="#">
+      <a class="nav-link text-white" href="/products">
         <span class="navbar-brand mb-0 h1">E-Commerce</span>
       </a>
       <!--Boton responsive-->
@@ -19,7 +19,7 @@
           </li>
 
           <navbar-item
-            :href="'#'" 
+            :href="'/products'" 
             :caption="'Home'"
           ></navbar-item>
 

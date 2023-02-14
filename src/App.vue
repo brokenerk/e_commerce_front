@@ -9,7 +9,7 @@
         <the-menu></the-menu>
 
         <div class="col-lg-9 col-md-9">
-          <component :is="activePage"></component>
+          <router-view></router-view>
         </div>
       </div>
     </div>
@@ -23,24 +23,18 @@
 import TheFooter from './components/UI/TheFooter.vue';
 import TheMenu from './components/UI/TheMenu.vue';
 import TheNavbar from "./components/UI/TheNavBar.vue";
-import Products from "./components/Products/Products.vue"
 
 export default {
   components: {
     TheNavbar,
     TheMenu,
-    TheFooter,
-    Products
+    TheFooter
   },
   data() {
     return {
-      activePage: 'products',
     }
   },
   methods: {
-    setActivePage(page) {
-      this.activePage = page
-    }
   }
 };
 </script>

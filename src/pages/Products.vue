@@ -1,6 +1,6 @@
 <template>
   <div>
-  <h1 class="my-4">Products</h1>
+    <h1 class="my-4">Products</h1>
     <div class="row">
       <product-card
         v-for="product in products"
@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import ProductCard from "./ProductCard.vue";
+import ProductCard from "../components/Products/ProductCard.vue";
 
 export default {
   components: {
