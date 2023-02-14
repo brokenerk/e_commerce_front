@@ -1,26 +1,52 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <!-- Navbar -->
+    <the-navbar></the-navbar>
+
+    <!-- Page Content -->
+    <div class="container">
+      <div class="row">
+        <the-menu></the-menu>
+
+        <div class="col-lg-9 col-md-9">
+          <component :is="activePage"></component>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer-->
+    <the-footer></the-footer>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import TheFooter from './components/UI/TheFooter.vue';
+import TheMenu from './components/UI/TheMenu.vue';
+import TheNavbar from "./components/UI/TheNavBar.vue";
+import Products from "./components/Products/Products.vue"
 
 export default {
-  name: 'App',
   components: {
-    HelloWorld
+    TheNavbar,
+    TheMenu,
+    TheFooter,
+    Products
+  },
+  data() {
+    return {
+      activePage: 'products',
+    }
+  },
+  methods: {
+    setActivePage(page) {
+      this.activePage = page
+    }
   }
-}
+};
 </script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  padding-top: 55px;
 }
 </style>
