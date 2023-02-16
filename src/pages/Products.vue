@@ -23,14 +23,9 @@ export default {
       products: null,
     }
   },
-  computed: {
-    axios() {
-      return this.$store.getters.axios;
-    },
-  },
   async created() {
     try {
-      const response = await this.axios.get('/products');
+      const response = await this.$axios.get('/products');
       this.products = response.data.products;
     }
     catch(e) {

@@ -52,6 +52,6 @@ export default {
   }
 
   .content-wrap {
-    padding-bottom: 139px    /* Footer height */
+    padding-bottom: 139px;    /* Footer height */
   }
 </style>

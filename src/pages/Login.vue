@@ -50,24 +50,19 @@ export default {
       password: ''
     }
   },
-  computed: {
-    userToken() {
-      return this.$store.getters.userToken;
-    },
-  },
   methods: {
     login() {
-      const response = this.$axios.post('/login', {
+      this.$axios.post('/login', {
         'username': this.username,
         'password': this.password
       })
-      .then(
-
-      )
-      .catch(error) {
-
-      }
-      console.log(response.data);
+      .then(response => {
+        // Asignar token a store
+        this.$store.commit("setUserToken", { token: response.data.token });
+      })
+      .catch(error => {
+        console.log(error.response.data.message)
+      });
     }
   },
   async created() {

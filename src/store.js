@@ -1,10 +1,8 @@
 import { createStore } from 'vuex';
-import { axios } from './boot/axios';
 
 const store = createStore({
 	state() {
 		return {
-			axios: axios,
       userToken: null
 		};
 	},
@@ -14,9 +12,6 @@ const store = createStore({
 		}
 	},
 	getters: {
-		axios(state) {
-			return state.axios;
-		},
     userToken(state) {
 			return state.userToken;
 		}
