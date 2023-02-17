@@ -56,17 +56,15 @@ export default {
         'username': this.username,
         'password': this.password
       })
-      .then(response => {
-        // Asignar token a store
-        this.$store.commit("setUserToken", { token: response.data.token });
+      .then((response) => {
+        this.$store.dispatch('auth', response.data.token);
+        const redirectUrl = '/' + (this.$route.query.redirect || 'products');
+        this.$router.replace(redirectUrl);
       })
-      .catch(error => {
-        console.log(error.response.data.message)
+      .catch((error) => {
+        alert(error.response.data.message)
       });
     }
   },
-  async created() {
-
-  }
 };
 </script>
