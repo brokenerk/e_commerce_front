@@ -24,13 +24,21 @@
           ></navbar-item>
 
           <navbar-item
+            v-if="!isLoggedIn"
             :to="'/login'" 
             :caption="'Login'"
           ></navbar-item>
 
           <navbar-item
+            v-if="!isLoggedIn"
             :to="'/register'" 
             :caption="'Register'"
+          ></navbar-item>
+
+          <navbar-item
+            v-if="isLoggedIn"
+            :to="'/users'" 
+            :caption="'Profile'"
           ></navbar-item>
 
           <navbar-item
@@ -38,7 +46,11 @@
             :caption="'Cart'"
           ></navbar-item>
 
-          
+          <navbar-item
+            v-if="isLoggedIn"
+            :to="'/logout'" 
+            :caption="'Logout'"
+          ></navbar-item>
 
         </ul>
       </div>
@@ -52,11 +64,15 @@ export default {
   components: {
     NavbarItem,
   },
-  props: [],
   data() {
     return {
       collapseClass: "none",
     };
+  },
+  computed: {
+    isLoggedIn() {
+      return this.$store.getters.isAuthenticated;
+    }
   },
   methods: {
     collapseNavbarList() {
