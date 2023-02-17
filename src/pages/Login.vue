@@ -25,15 +25,15 @@
 
     <br/>	
     <div class="text-center row">
-      <a class="txt1" href="/register">
-        Create new account						
-      </a>
+      <router-link class="txt1" to="/register">
+        Create new account
+      </router-link>
     </div>
 
     <div class="text-center row">
-      <a class="txt1" href="/products">
-        Go back to products					
-      </a>
+      <router-link class="txt1" to="/products">
+        Go back to products
+      </router-link>
     </div>
 
   </div>

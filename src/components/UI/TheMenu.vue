@@ -2,10 +2,10 @@
   <div class="col-lg-3 col-md-3">
     <h1 class="my-4">Menu</h1>
     <div class="list-group">
-      <a href="/products" class="list-group-item text-danger">Products</a>
-      <a href="/cart" class="list-group-item text-danger">Cart</a>
-      <a href="/users" class="list-group-item text-danger">Account</a>
-      <a href="/orders" class="list-group-item text-danger">Orders</a>
+      <router-link class="list-group-item text-danger" to="/products">Products</router-link>
+      <router-link class="list-group-item text-danger" to="/cart">Cart</router-link>
+      <router-link class="list-group-item text-danger" to="/users">Profile</router-link>
+      <router-link class="list-group-item text-danger" to="/orders">Orders</router-link>
     </div>
   </div>
 </template>

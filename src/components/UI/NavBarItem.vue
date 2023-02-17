@@ -1,13 +1,13 @@
 <template>
   <li class="nav-item">
-    <a class="nav-link text-white" :href="href" :target="target">
+    <router-link class="nav-link text-white" :to="to">
       {{ caption }}
-    </a>
+    </router-link>
   </li>
 </template>
 
 <script>
 export default {
-  props: ["href", "target", "caption"],
+  props: ["to", "caption"],
 };
 </script>

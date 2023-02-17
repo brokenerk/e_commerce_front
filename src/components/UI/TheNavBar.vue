@@ -2,9 +2,9 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
       <!--Brokenerk-->
-      <a class="nav-link text-white" href="/products">
+      <router-link class="nav-link text-white" to="/">
         <span class="navbar-brand mb-0 h1">E-Commerce</span>
-      </a>
+      </router-link>
       <!--Boton responsive-->
       <button class="navbar-toggler" @click="collapseNavbarList">
         <span class="navbar-toggler-icon"></span>
@@ -19,22 +19,22 @@
           </li>
 
           <navbar-item
-            :href="'/products'" 
+            :to="'/products'" 
             :caption="'Home'"
           ></navbar-item>
 
           <navbar-item
-            :href="'#'" 
+            :to="'/login'" 
             :caption="'Login'"
           ></navbar-item>
 
           <navbar-item
-            :href="'#'" 
+            :to="'/register'" 
             :caption="'Register'"
           ></navbar-item>
 
           <navbar-item
-            :href="'#'" 
+            :to="'/cart'" 
             :caption="'Cart'"
           ></navbar-item>
 
