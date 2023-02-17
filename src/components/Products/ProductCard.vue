@@ -18,28 +18,36 @@
         <!-- <p class="card-text">{{ product.tx_description }}</p> -->
         <h8>On Stock: {{ product.nu_stock }} remaining</h8>
       </div>
-      <div class="card-footer">
-      <!-- <s:if test="%{idUser!=null}">
-
-        <s:form id="frmAddProduct"
-        action="%{#pageContext.request.contextPath}/cart"
-        method="post" theme="simple">
-        
-        <s:hidden id="IdSel" name="idSel" value="%{#product.id}"/>
-        <s:submit class="btn btn-info" value="Add to Cart" />
-        </s:form>
-      </s:if> -->
+      <div class="card-footer" v-if="isLoggedIn">
+        <button class="btn btn-info" @click="addToCart(product.id_product)">Add to Cart</button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-
 export default {
   props: [
     "product"
-  ]
+  ],
+  computed: {
+    isLoggedIn() {
+      return this.$store.getters.isAuthenticated;
+    }
+  },
+  methods: {
+    addToCart(id_product) {
+      this.$axios.post('/cart', {
+        "id_product": id_product
+      })
+      .then(() => {
+        this.$router.replace('/cart');
+      })
+      .catch((error) => {
+        alert(error.response.data.message)
+      });
+    }
+  }
 };
 </script>
 
