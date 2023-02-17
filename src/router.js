@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
 import Products from './pages/Products.vue';
-import Cart from './components/Order/Cart.vue';
+import Cart from './pages/Cart.vue';
 import Login from './pages/Login.vue';
 import store from './store/index.js';
 
