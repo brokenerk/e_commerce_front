@@ -1,8 +1,8 @@
 import { createApp } from 'vue';
 import App from './App.vue';
-import { api } from './boot/axios';
 import router from './router.js';
-import store from './store.js';
+import store from './store/index.js';
+import { api } from './boot/axios';
 
 const app = createApp(App);
 app.config.globalProperties.$axios = api;
