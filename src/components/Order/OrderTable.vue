@@ -19,6 +19,7 @@
           :key="order_detail.id_order"
           :order_detail="order_detail"
           :loadCart="loadCart"
+          :isOrder="isOrder"
         >
         </order-table-row>
         
@@ -46,7 +47,7 @@ export default {
     OrderTableRow
   },
   props: [
-    "total", "order_details", "loadCart"
+    "total", "order_details", "loadCart", "isOrder"
   ]
 };
 </script>

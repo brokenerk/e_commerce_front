@@ -4,14 +4,32 @@
     <td>{{ order_detail.product.tx_name }}</td>
     <td>$ {{ order_detail.product.real_price }}</td>
     <td>{{ order_detail.nu_amount }}</td>
-    <td>
-      <button class="btn btn-success" @click="modifyAmount(order_detail.product.id_product, true)">+</button>
+    <td >
+      <button 
+        v-if="isOrder == false" 
+        class="btn btn-success" 
+        @click="modifyAmount(order_detail.product.id_product, true)"
+      >
+        +
+      </button>
     </td>
     <td>
-      <button class="btn btn-secondary" @click="modifyAmount(order_detail.product.id_product, false)">-</button>
+      <button 
+      v-if="isOrder == false" 
+      class="btn btn-secondary" 
+      @click="modifyAmount(order_detail.product.id_product, false)"
+      >
+        -
+      </button>
     </td>
     <td>
-      <button class="btn btn-danger" @click="removeProduct(order_detail.product.id_product)">Remove</button>
+      <button 
+      v-if="isOrder == false" 
+      class="btn btn-danger" 
+      @click="removeProduct(order_detail.product.id_product)"
+      >
+        Remove
+      </button>
     </td>
     <td></td>
   </tr>
@@ -20,7 +38,7 @@
 <script>
 export default {
   props: [
-    "order_detail", "loadCart"
+    "order_detail", "loadCart", "isOrder"
   ],
   methods: {
     modifyAmount(id_product, add) {
