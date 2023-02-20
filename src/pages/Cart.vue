@@ -10,7 +10,7 @@
     </div>
 		
     <order-table
-      :order_details="cart.order_details"
+      :orderDetails="cart.order_details"
       :total="cart.total_formatted"
       :loadCart="loadCart"
       :isOrder="false"

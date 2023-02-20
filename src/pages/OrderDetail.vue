@@ -6,7 +6,7 @@
 		</div>
 		
     <order-table
-      :order_details="order.order_details"
+      :orderDetails="order.order_details"
       :total="order.total_formatted"
       :isOrder="true"
     ></order-table>

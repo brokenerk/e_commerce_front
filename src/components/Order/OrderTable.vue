@@ -15,9 +15,9 @@
       </thead>
       <tbody>
         <order-table-row
-          v-for="order_detail in order_details"
-          :key="order_detail.id_order"
-          :order_detail="order_detail"
+          v-for="orderDetail in orderDetails"
+          :key="orderDetail.id_order"
+          :orderDetail="orderDetail"
           :loadCart="loadCart"
           :isOrder="isOrder"
         >
@@ -47,7 +47,7 @@ export default {
     OrderTableRow
   },
   props: [
-    "total", "order_details", "loadCart", "isOrder"
+    "total", "orderDetails", "loadCart", "isOrder"
   ]
 };
 </script>

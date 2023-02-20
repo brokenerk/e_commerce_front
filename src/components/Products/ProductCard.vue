@@ -36,9 +36,9 @@ export default {
     }
   },
   methods: {
-    addToCart(id_product) {
+    addToCart(idProduct) {
       this.$axios.post('/cart', {
-        "id_product": id_product
+        "id_product": idProduct
       })
       .then(() => {
         this.$router.replace('/cart');

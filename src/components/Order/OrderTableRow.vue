@@ -1,14 +1,14 @@
 <template>
   <tr>
-    <td><img :src="require('./../../assets/images/products/'+ order_detail.product.id_product +'.jpg')" width="100"/></td>
-    <td>{{ order_detail.product.tx_name }}</td>
-    <td>$ {{ order_detail.product.real_price }}</td>
-    <td>{{ order_detail.nu_amount }}</td>
+    <td><img :src="require('./../../assets/images/products/'+ orderDetail.product.id_product +'.jpg')" width="100"/></td>
+    <td>{{ orderDetail.product.tx_name }}</td>
+    <td>$ {{ orderDetail.product.real_price }}</td>
+    <td>{{ orderDetail.nu_amount }}</td>
     <td >
       <button 
         v-if="isOrder == false" 
         class="btn btn-success" 
-        @click="modifyAmount(order_detail.product.id_product, true)"
+        @click="modifyAmount(orderDetail.product.id_product, true)"
       >
         +
       </button>
@@ -17,7 +17,7 @@
       <button 
       v-if="isOrder == false" 
       class="btn btn-secondary" 
-      @click="modifyAmount(order_detail.product.id_product, false)"
+      @click="modifyAmount(orderDetail.product.id_product, false)"
       >
         -
       </button>
@@ -26,7 +26,7 @@
       <button 
       v-if="isOrder == false" 
       class="btn btn-danger" 
-      @click="removeProduct(order_detail.product.id_product)"
+      @click="removeProduct(orderDetail.product.id_product)"
       >
         Remove
       </button>
@@ -38,12 +38,12 @@
 <script>
 export default {
   props: [
-    "order_detail", "loadCart", "isOrder"
+    "orderDetail", "loadCart", "isOrder"
   ],
   methods: {
-    modifyAmount(id_product, add) {
+    modifyAmount(idProduct, add) {
       this.$axios.put('/cart', {
-        "id_product": id_product,
+        "id_product": idProduct,
         "add": add
       })
       .then(() => {
@@ -53,10 +53,10 @@ export default {
         alert(error.response.data.message)
       });
     },
-    removeProduct(id_product) {
+    removeProduct(idProduct) {
       this.$axios.delete('/cart', {
         data: {
-          "id_product": id_product
+          "id_product": idProduct
         }
       })
       .then(() => {
