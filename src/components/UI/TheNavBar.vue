@@ -37,7 +37,7 @@
 
           <navbar-item
             v-if="isLoggedIn"
-            :to="'/users'" 
+            :to="'/profile'" 
             :caption="'Profile'"
           ></navbar-item>
 

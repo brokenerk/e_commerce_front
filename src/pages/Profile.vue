@@ -1,27 +1,23 @@
 <template>
 <div>
-  <h1 class="my-4">Register</h1>
-	<!-- <s:actionerror/> -->
+  <h1 class="my-4">My Profile</h1>
 	
   <user-personal-info
     @setUserData="setUserData($event)"
-    :loadUser="false"
+    :loadUser="true"
   ></user-personal-info>
 	
   <div class="row">
     <div class="col-md-2 col-lg-2">
+      <router-link class="btn btn-info" to="/orders">My Orders</router-link>
+    </div>
+    <div class="col-md-4 col-lg-4">
       <button 
         class="btn btn-success"
-        @click="registerUser()"
+        @click="updateUser()"
       >
-        Sign Up
+        Save Changes
       </button>
-    </div>
-    <div class="col-md-2 col-lg-5">
-      <router-link class="btn btn-danger" to="/products">Go back to products</router-link>
-    </div>
-    <div class="col-md-2 col-lg-5">
-      <router-link class="btn btn-info" to="/login">Already have an account? Log In</router-link>
     </div>
   </div>
 
@@ -46,15 +42,15 @@ export default {
       this.confirmPassword = payload.confirmPassword;
       this.user = payload.user;
     },
-    registerUser() {
-      this.$axios.post('/users', this.user)
+    updateUser() {
+      this.$axios.put('/users', JSON.stringify(this.user))
       .then(() => {
-        this.$router.replace('/login');
+        alert("Changes saved!")
       })
       .catch((error) => {
         alert(error.response.data.message)
       });
     }
-  }
+  },
 };
 </script>
