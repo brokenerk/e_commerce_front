@@ -127,6 +127,8 @@ export default {
   created() {
     if (this.loadUser == true)
       this.getUser();
+    
+    this.setUserData();
   }
 };
 </script>

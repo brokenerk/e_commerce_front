@@ -10,6 +10,10 @@
       :total="order.total_formatted"
       :isOrder="true"
     ></order-table>
+
+    <br/>
+    <router-link class="btn btn-info" to="/orders">Return to orders</router-link>
+
   </div>
 </template>
 
