@@ -5,6 +5,7 @@ import Cart from './pages/Cart.vue';
 import Login from './pages/Login.vue';
 import Orders from './pages/Orders.vue';
 import OrderDetail from './pages/OrderDetail.vue';
+import Register from './pages/Register.vue';
 import store from './store/index.js';
 
 const router = createRouter({
@@ -15,7 +16,8 @@ const router = createRouter({
     { path: '/products', component: Products },
     { path: '/cart', component: Cart, meta: { requiresAuth: true} },
     { path: '/orders', component: Orders, meta: { requiresAuth: true} },
-    { path: '/orders/:id', component: OrderDetail, meta: { requiresAuth: true} }
+    { path: '/orders/:id', component: OrderDetail, meta: { requiresAuth: true} },
+    { path: '/register', component: Register }
   ],
 });
 
