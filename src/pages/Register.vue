@@ -1,30 +1,9 @@
 <template>
 <div>
   <h1 class="my-4">Register</h1>
-	<!-- <s:actionerror/> -->
-	
   <user-personal-info
-    @setUserData="setUserData($event)"
     :loadUser="false"
   ></user-personal-info>
-	
-  <div class="row">
-    <div class="col-md-2 col-lg-2">
-      <button 
-        class="btn btn-success"
-        @click="registerUser()"
-      >
-        Sign Up
-      </button>
-    </div>
-    <div class="col-md-2 col-lg-5">
-      <router-link class="btn btn-danger" to="/products">Go back to products</router-link>
-    </div>
-    <div class="col-md-2 col-lg-5">
-      <router-link class="btn btn-info" to="/login">Already have an account? Log In</router-link>
-    </div>
-  </div>
-
 </div>
 </template>
 
@@ -34,27 +13,6 @@ import UserPersonalInfo from '../components/Users/UserPersonalInfo.vue';
 export default {
   components: {
     UserPersonalInfo
-  },
-  data() {
-    return {
-      user: null,
-      confirmPassword: ''
-    }
-  },
-  methods: {
-    setUserData(payload) {
-      this.confirmPassword = payload.confirmPassword;
-      this.user = payload.user;
-    },
-    registerUser() {
-      this.$axios.post('/users', this.user)
-      .then(() => {
-        this.$router.replace('/login');
-      })
-      .catch((error) => {
-        alert(error.response.data.message)
-      });
-    }
   }
 };
 </script>

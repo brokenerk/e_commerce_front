@@ -48,17 +48,15 @@ export default {
     return {
       username: '',
       password: '',
-      usernameIsValid: '',
+      usernameIsValid: null,
       usernameError: '',
-      passwordIsValid: '',
+      passwordIsValid: null,
       passwordError: ''
     }
   },
   methods: {
     login() {
-      const isValid = this.validate()
-
-      if (isValid) {
+      if (this.validate()) {
         this.$axios.post('/login', {
           'username': this.username,
           'password': this.password
