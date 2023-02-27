@@ -63,7 +63,7 @@ export default {
         })
         .then((response) => {
           this.$store.dispatch('auth', response.data.token);
-          const redirectUrl = '/' + (this.$route.query.redirect || 'products');
+          const redirectUrl = this.$route.redirectedFrom.fullPath || '/products';
           this.$router.replace(redirectUrl);
         })
         .catch((error) => {

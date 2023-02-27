@@ -193,7 +193,6 @@ export default {
       this.errors.secondNameError = '';
       this.errors.emailError = '';
       this.errors.passwordError = '';
-      this.errors.confirmPasswordError = '';
       this.errors.streetError = '';
       this.errors.cityError = '';
       this.errors.stateError = '';

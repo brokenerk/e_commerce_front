@@ -1,10 +1,10 @@
 <template>
-<div>
-  <h1 class="my-4">Register</h1>
-  <user-personal-info
-    :loadUser="false"
-  ></user-personal-info>
-</div>
+  <div>
+    <h1 class="my-4">Register</h1>
+    <user-personal-info
+      :loadUser="false"
+    ></user-personal-info>
+  </div>
 </template>
 
 <script>

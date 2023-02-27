@@ -48,8 +48,9 @@
 
           <navbar-item
             v-if="isLoggedIn"
-            :to="'/logout'" 
+            :to="''" 
             :caption="'Logout'"
+            @click="logout()"
           ></navbar-item>
 
         </ul>
@@ -80,6 +81,11 @@ export default {
         ? (this.collapseClass = "block")
         : (this.collapseClass = "none");
     },
+    logout() {
+      this.$store.dispatch('logout');
+      const redirectUrl = this.$route.redirectedFrom.fullPath || '/products';
+      this.$router.replace(redirectUrl);
+    }
   },
 };
 </script>
