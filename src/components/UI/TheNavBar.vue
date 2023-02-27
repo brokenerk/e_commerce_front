@@ -83,8 +83,11 @@ export default {
     },
     logout() {
       this.$store.dispatch('logout');
-      const redirectUrl = this.$route.redirectedFrom.fullPath || '/products';
-      this.$router.replace(redirectUrl);
+
+      if (this.$route.redirectedFrom === undefined)
+        this.$router.replace('/products');
+      else
+        this.$router.replace(this.$route.redirectedFrom.fullPath)
     }
   },
 };
