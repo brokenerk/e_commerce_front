@@ -7,7 +7,9 @@
       <p class="m-0 text-center text-white">
         Powered by
       </p>
-      <p class="m-0 text-center text-white">
+      <p class="m-0 text-center">
+        <img src="./../../assets/images/postgresql.png" />
+        <img src="./../../assets/images/python.png" />
         <img src="./../../assets/images/vuejs.png" />
         <img src="./../../assets/images/bootstrap.png" />
       </p>
