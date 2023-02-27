@@ -35,17 +35,20 @@ export default {
 
             this.$axios.put('/buy')
             .then(() => {
+              this.$swal("Order Purchased", null, "success");
               console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
               this.$emit('setPurchased');
             })
             .catch((error) => {
-              console.log(error);
-              alert(error);
+              const errorMessage = error.response ? error.response.data.message : "Please try again later";
+              this.$swal("Error Purchasing Order", errorMessage, "error");
+              // console.log(error.response.data.message);
             });
           },
-          onError: err => {
-            console.log(err);
-            alert(err);
+          onError: (error) => {
+            const errorMessage = error.response ? error.response.data.message : "Please try again later";
+            this.$swal("Error Purchasing Order", errorMessage, "error");
+            // console.log(error.response.data.message);
           }
         })
         .render("#paypal");

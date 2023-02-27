@@ -86,7 +86,7 @@
         </button>
       </div>
       <div class="col-md-2 col-lg-5">
-        <router-link class="btn btn-danger" to="/products">Go back to products</router-link>
+        <router-link class="btn btn-secondary" to="/products">Go back to products</router-link>
       </div>
       <div class="col-md-2 col-lg-5">
         <router-link class="btn btn-info" to="/login">Already have an account? Log In</router-link>
@@ -161,8 +161,9 @@ export default {
       .then((response) => {
         this.user = response.data.user;
       })
-      .catch((error) => {
-        alert(error.response.data.message)
+      .catch(() => {
+        // console.log(error.response.data.message);
+        this.$swal("Error Loading Profile", "Please try again later", "error");
       });
     },
     registerUser() {
@@ -172,7 +173,9 @@ export default {
           this.$router.replace('/login');
         })
         .catch((error) => {
-          alert(error.response.data.message)
+          // console.log(error.response.data.message);
+          const errorMessage = error.response ? error.response.data.message : "Please try again later";
+          this.$swal("Error Registering User", errorMessage, "error");
         });
         }
     },
@@ -180,10 +183,12 @@ export default {
       if(this.validate()) {
         this.$axios.put('/users', JSON.stringify(this.user))
         .then(() => {
-          alert("Changes saved!")
+          this.$swal("Profile Updated", null, "success");
         })
         .catch((error) => {
-          alert(error.response.data.message)
+          // console.log(error.response.data.message);
+          const errorMessage = error.response ? error.response.data.message : "Please try again later";
+          this.$swal("Error Updating Profile", errorMessage, "error");
         });
       }
     },

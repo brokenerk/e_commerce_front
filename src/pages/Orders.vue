@@ -51,8 +51,9 @@ export default {
       .then((response) => {
         this.orders = response.data.orders;
       })
-      .catch((error) => {
-        alert(error.response.data.message)
+      .catch(() => {
+        // console.log(error.response.data.message);
+        this.$swal("Error Loading Orders", "Please try again later", "error");
       });
     }
   },

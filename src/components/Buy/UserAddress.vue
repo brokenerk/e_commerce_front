@@ -29,8 +29,9 @@ export default {
       .then((response) => {
         this.address = response.data.user;
       })
-      .catch((error) => {
-        alert(error.response.data.message)
+      .catch(() => {
+        this.$swal("Error Loading Address", "Please try again later", "error");
+        // console.log(error.response.data.message);
       });
     }
   },

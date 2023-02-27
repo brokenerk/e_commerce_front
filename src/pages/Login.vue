@@ -70,16 +70,19 @@ export default {
             this.$router.replace(this.$route.redirectedFrom.fullPath)
         })
         .catch((error) => {
-          if (error.response.data.message == 'Password is wrong') {
+          const errorMessage = error.response ? error.response.data.message : "Please try again later";
+
+          if (errorMessage == 'Password is wrong') {
             this.passwordIsValid = 'is-invalid';
-            this.passwordError = error.response.data.message
+            this.passwordError = errorMessage;
           }
-          else if (error.response.data.message == 'Username is wrong') {
+          else if (errorMessage == 'Username is wrong') {
             this.usernameIsValid = 'is-invalid';
-            this.usernameError = error.response.data.message;
+            this.usernameError = errorMessage;
           }
           else
-            this.passwordIsValid = 'An error occurred. Please try again later.';
+            this.$swal("Login Error", errorMessage, "error");
+
         })
       }
     },

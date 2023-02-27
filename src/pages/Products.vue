@@ -25,11 +25,13 @@ export default {
   },
   async created() {
     try {
+      
       const response = await this.$axios.get('/products');
       this.products = response.data.products;
     }
     catch(e) {
-      console.log(e);
+      // console.log(e);
+      this.$swal("Error Loading Products", "Please try again later", "error");
     }
   }
 };

@@ -37,8 +37,9 @@ export default {
       .then((response) => {
         this.order = response.data.order;
       })
-      .catch((error) => {
-        alert(error.response.data.message)
+      .catch(() => {
+        // console.log(error.response.data.message)
+        this.$swal("Error Loading Order", "Please try again later", "error");
       });
     }
   },

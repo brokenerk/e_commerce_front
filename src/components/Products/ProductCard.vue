@@ -44,7 +44,9 @@ export default {
         this.$router.replace('/cart');
       })
       .catch((error) => {
-        alert(error.response.data.message)
+        // console.log(error.response.data.message);
+        const errorMessage = error.response ? error.response.data.message : "Please try again later";
+        this.$swal("Error Adding Product", errorMessage, "error");
       });
     }
   }

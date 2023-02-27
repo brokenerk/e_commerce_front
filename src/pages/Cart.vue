@@ -44,8 +44,9 @@ export default {
       .then((response) => {
         this.cart = response.data.cart;
       })
-      .catch((error) => {
-        alert(error.response.data.message)
+      .catch(() => {
+        this.$swal("Error Loading Cart", "Please try again later", "error");
+        // console.log(error.response.data.message);
       });
     }
   },

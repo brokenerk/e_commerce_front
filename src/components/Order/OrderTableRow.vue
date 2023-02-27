@@ -50,7 +50,9 @@ export default {
         this.loadCart();
       })
       .catch((error) => {
-        alert(error.response.data.message)
+        const errorMessage = error.response ? error.response.data.message : "Please try again later";
+        this.$swal("Error Modifying Amount", errorMessage, "error");
+        // console.log(error.response.data.message);
       });
     },
     removeProduct(idProduct) {
@@ -63,7 +65,9 @@ export default {
         this.loadCart();
       })
       .catch((error) => {
-        alert(error.response.data.message)
+        // console.log(error.response.data.message);
+        const errorMessage = error.response ? error.response.data.message : "Please try again later";
+        this.$swal("Error Removing Product", errorMessage, "error");
       });
     }
   }
