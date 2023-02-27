@@ -168,27 +168,50 @@ export default {
     },
     registerUser() {
       if(this.validate()) {
-        this.$axios.post('/users', this.user)
-        .then(() => {
-          this.$router.replace('/login');
-        })
-        .catch((error) => {
-          // console.log(error.response.data.message);
-          const errorMessage = error.response ? error.response.data.message : "Please try again later";
-          this.$swal.fire("Error Registering User", errorMessage, "error");
+        this.$swal.fire({
+          title: 'Create Account?',
+          icon: 'info',
+          showCancelButton: true,
+          confirmButtonText: 'Yes',
+          cancelButtonText: 'Cancel',
+          reverseButtons: true
+        }).then((result) => {
+          if (result.isConfirmed) {
+            this.$axios.post('/users', this.user)
+            .then(() => {
+              this.$swal.fire("Account Created", "Now you can log in into your account", "success");
+              this.$router.replace('/login');
+            })
+            .catch((error) => {
+              // console.log(error.response.data.message);
+              const errorMessage = error.response ? error.response.data.message : "Please try again later";
+              this.$swal.fire("Error Registering User", errorMessage, "error");
+            });
+          }
         });
-        }
+      }
     },
     updateUser() {
       if(this.validate()) {
-        this.$axios.put('/users', JSON.stringify(this.user))
-        .then(() => {
-          this.$swal.fire("Profile Updated", null, "success");
-        })
-        .catch((error) => {
-          // console.log(error.response.data.message);
-          const errorMessage = error.response ? error.response.data.message : "Please try again later";
-          this.$swal.fire("Error Updating Profile", errorMessage, "error");
+        this.$swal.fire({
+          title: 'Save Changes?',
+          icon: 'info',
+          showCancelButton: true,
+          confirmButtonText: 'Yes',
+          cancelButtonText: 'Cancel',
+          reverseButtons: true
+        }).then((result) => {
+          if (result.isConfirmed) {
+            this.$axios.put('/users', this.user)
+            .then(() => {
+              this.$swal.fire("Profile Updated", "", "success");
+            })
+            .catch((error) => {
+              console.log(error);
+              const errorMessage = error.response ? error.response.data.message : "Please try again later";
+              this.$swal.fire("Error Updating Profile", errorMessage, "error");
+            });
+          }
         });
       }
     },

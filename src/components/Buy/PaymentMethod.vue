@@ -35,7 +35,7 @@ export default {
 
             this.$axios.put('/buy')
             .then(() => {
-              this.$swal.fire("Order Purchased", null, "success");
+              this.$swal.fire("Order Purchased", "", "success");
               console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
               this.$emit('setPurchased');
             })

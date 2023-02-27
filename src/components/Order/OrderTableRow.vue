@@ -57,26 +57,28 @@ export default {
     },
     removeProduct(idProduct) {
       this.$swal.fire({
-        title: "Save Changes?",
-        icon: "warning",
-        buttons: true,
-        dangerMode: true,
-      });
-
-
-
-      this.$axios.delete('/cart', {
-        data: {
-          "id_product": idProduct
+        title: 'Remove Product from Cart?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes',
+        cancelButtonText: 'Cancel',
+        reverseButtons: true
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.$axios.delete('/cart', {
+            data: {
+              "id_product": idProduct
+            }
+          })
+          .then(() => {
+            this.loadCart();
+          })
+          .catch((error) => {
+            // console.log(error.response.data.message);
+            const errorMessage = error.response ? error.response.data.message : "Please try again later";
+            this.$swal.fire("Error Removing Product", errorMessage, "error");
+          });
         }
-      })
-      .then(() => {
-        this.loadCart();
-      })
-      .catch((error) => {
-        // console.log(error.response.data.message);
-        const errorMessage = error.response ? error.response.data.message : "Please try again later";
-        this.$swal.fire("Error Removing Product", errorMessage, "error");
       });
     }
   }
