@@ -163,7 +163,7 @@ export default {
       })
       .catch(() => {
         // console.log(error.response.data.message);
-        this.$swal("Error Loading Profile", "Please try again later", "error");
+        this.$swal.fire("Error Loading Profile", "Please try again later", "error");
       });
     },
     registerUser() {
@@ -175,7 +175,7 @@ export default {
         .catch((error) => {
           // console.log(error.response.data.message);
           const errorMessage = error.response ? error.response.data.message : "Please try again later";
-          this.$swal("Error Registering User", errorMessage, "error");
+          this.$swal.fire("Error Registering User", errorMessage, "error");
         });
         }
     },
@@ -183,12 +183,12 @@ export default {
       if(this.validate()) {
         this.$axios.put('/users', JSON.stringify(this.user))
         .then(() => {
-          this.$swal("Profile Updated", null, "success");
+          this.$swal.fire("Profile Updated", null, "success");
         })
         .catch((error) => {
           // console.log(error.response.data.message);
           const errorMessage = error.response ? error.response.data.message : "Please try again later";
-          this.$swal("Error Updating Profile", errorMessage, "error");
+          this.$swal.fire("Error Updating Profile", errorMessage, "error");
         });
       }
     },

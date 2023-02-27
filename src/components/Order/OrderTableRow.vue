@@ -51,11 +51,20 @@ export default {
       })
       .catch((error) => {
         const errorMessage = error.response ? error.response.data.message : "Please try again later";
-        this.$swal("Error Modifying Amount", errorMessage, "error");
+        this.$swal.fire("Error Modifying Amount", errorMessage, "error");
         // console.log(error.response.data.message);
       });
     },
     removeProduct(idProduct) {
+      this.$swal.fire({
+        title: "Save Changes?",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      });
+
+
+
       this.$axios.delete('/cart', {
         data: {
           "id_product": idProduct
@@ -67,7 +76,7 @@ export default {
       .catch((error) => {
         // console.log(error.response.data.message);
         const errorMessage = error.response ? error.response.data.message : "Please try again later";
-        this.$swal("Error Removing Product", errorMessage, "error");
+        this.$swal.fire("Error Removing Product", errorMessage, "error");
       });
     }
   }

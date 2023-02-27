@@ -46,7 +46,7 @@ export default {
       .catch((error) => {
         // console.log(error.response.data.message);
         const errorMessage = error.response ? error.response.data.message : "Please try again later";
-        this.$swal("Error Adding Product", errorMessage, "error");
+        this.$swal.fire("Error Adding Product", errorMessage, "error");
       });
     }
   }

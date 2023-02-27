@@ -31,7 +31,7 @@ export default {
     }
     catch(e) {
       // console.log(e);
-      this.$swal("Error Loading Products", "Please try again later", "error");
+      this.$swal.fire("Error Loading Products", "Please try again later", "error");
     }
   }
 };

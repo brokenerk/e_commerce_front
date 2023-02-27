@@ -45,7 +45,7 @@ export default {
         this.cart = response.data.cart;
       })
       .catch(() => {
-        this.$swal("Error Loading Cart", "Please try again later", "error");
+        this.$swal.fire("Error Loading Cart", "Please try again later", "error");
         // console.log(error.response.data.message);
       });
     }

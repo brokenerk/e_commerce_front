@@ -81,7 +81,7 @@ export default {
             this.usernameError = errorMessage;
           }
           else
-            this.$swal("Login Error", errorMessage, "error");
+            this.$swal.fire("Login Error", errorMessage, "error");
 
         })
       }

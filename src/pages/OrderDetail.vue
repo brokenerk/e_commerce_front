@@ -39,7 +39,7 @@ export default {
       })
       .catch(() => {
         // console.log(error.response.data.message)
-        this.$swal("Error Loading Order", "Please try again later", "error");
+        this.$swal.fire("Error Loading Order", "Please try again later", "error");
       });
     }
   },

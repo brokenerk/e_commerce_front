@@ -30,7 +30,7 @@ export default {
         this.address = response.data.user;
       })
       .catch(() => {
-        this.$swal("Error Loading Address", "Please try again later", "error");
+        this.$swal.fire("Error Loading Address", "Please try again later", "error");
         // console.log(error.response.data.message);
       });
     }
