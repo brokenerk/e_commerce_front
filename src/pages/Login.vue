@@ -1,41 +1,41 @@
 <template>
-  <div clss='row'>
-    <h1 class="my-4">Login</h1>
+  <div>
+    <h1 class="my-4 text-center">Login</h1>
 
-    <!-- <s:actionerror/> -->
-    
-      
-      <div class="row">
-        <input class="input100" type="text" v-model="username" placeholder="Username"/>
-        <!-- <s:textfield cssClass="input100" cssErrorClass="is-invalid" id="txUsername" name="username" placeholder="Email"/>
-        <s:fielderror fieldName="username" style="color: white; font-weight: bold;"/> -->
+    <div class="form-group row">
+      <div class="col-lg-3 col-md-3"></div>
+      <div class="col-lg-6 col-md-6">
+        <label for="" class="text-dark">Username</label>
+        <input :class="'form-control ' + usernameIsValid" v-model="username" placeholder="Username"/>
+        <div class="invalid-feedback">{{ usernameError }}</div>
       </div>
+    </div>
 
-      <div class="row">
-        <input class="input100" type="password" v-model="password" placeholder="Password"/>
-        <!-- <s:password id="txPassword" name="password" cssClass="input100" cssErrorClass="is-invalid" placeholder="Password"/>
-        <s:fielderror fieldName="password" style="color: white; font-weight: bold;"/> -->
+    <div class="form-group row">
+      <div class="col-lg-3 col-md-3"></div>
+      <div class="col-lg-6 col-md-6">
+        <label for="" class="text-dark">Password</label>
+        <input :class="'form-control ' + passwordIsValid" type="password" v-model="password" placeholder="Password"/>
+        <div class="invalid-feedback">{{ passwordError }}</div>
       </div>
+    </div>
 
-      <!-- <s:hidden id="IdSel" name="idSel"/> -->
-
-      <div class="row">
+    <div class="form-group text-center">
         <button class="btn btn-info" @click="login()">Sign In</button>
-      </div>
+    </div>
 
-    <br/>	
-    <div class="text-center row">
-      <router-link class="txt1" to="/register">
+    <br/>
+    <div class="form-group text-center">
+      <router-link class="btn btn-success" to="/register">
         Create new account
       </router-link>
     </div>
 
-    <div class="text-center row">
-      <router-link class="txt1" to="/products">
+    <div class="form-group text-center">
+      <router-link class="btn btn-secondary" to="/products">
         Go back to products
       </router-link>
     </div>
-
   </div>
 </template>
 
@@ -47,23 +47,60 @@ export default {
   data() {
     return {
       username: '',
-      password: ''
+      password: '',
+      usernameIsValid: '',
+      usernameError: '',
+      passwordIsValid: '',
+      passwordError: ''
     }
   },
   methods: {
     login() {
-      this.$axios.post('/login', {
-        'username': this.username,
-        'password': this.password
-      })
-      .then((response) => {
-        this.$store.dispatch('auth', response.data.token);
-        const redirectUrl = '/' + (this.$route.query.redirect || 'products');
-        this.$router.replace(redirectUrl);
-      })
-      .catch((error) => {
-        alert(error.response.data.message)
-      });
+      const isValid = this.validate()
+
+      if (isValid) {
+        this.$axios.post('/login', {
+          'username': this.username,
+          'password': this.password
+        })
+        .then((response) => {
+          this.$store.dispatch('auth', response.data.token);
+          const redirectUrl = '/' + (this.$route.query.redirect || 'products');
+          this.$router.replace(redirectUrl);
+        })
+        .catch((error) => {
+          if (error.response.data.message == 'Password is wrong') {
+            this.passwordIsValid = 'is-invalid';
+            this.passwordError = error.response.data.message
+          }
+          else if (error.response.data.message == 'Username is wrong') {
+            this.usernameIsValid = 'is-invalid';
+            this.usernameError = error.response.data.message;
+          }
+          else
+            this.passwordIsValid = 'An error occurred. Please try again later.';
+        })
+      }
+    },
+    validate() {
+      this.usernameIsValid = '';
+      this.usernameError = '';
+      this.passwordIsValid = '';
+      this.passwordError = '';
+      let isValid = true;
+
+      if (this.username == '') {
+        this.usernameIsValid = 'is-invalid';
+        this.usernameError = 'Enter a valid username';
+        isValid = false;
+      }
+
+      if (this.password == '') {
+        this.passwordIsValid = 'is-invalid';
+        this.passwordError = 'Enter a password';
+        isValid = false;
+      }
+      return isValid;
     }
   },
 };
