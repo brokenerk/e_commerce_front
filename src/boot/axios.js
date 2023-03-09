@@ -2,7 +2,7 @@ import axios from 'axios';
 import store from '.././store/index.js';
 
 let config = {
-  baseURL: "http://0.0.0.0:5115/e_commerce",
+  baseURL: process.env.VUE_APP_API_URL + ":" + process.env.VUE_APP_API_PORT + "/e_commerce",
   headers: { 
     'Cache-Control': 'no-cache, must-revalidate', 
     'Pragma': 'no-cache', 

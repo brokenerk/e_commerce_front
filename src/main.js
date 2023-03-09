@@ -3,7 +3,7 @@ import App from './App.vue';
 import router from './router.js';
 import store from './store/index.js';
 import { api } from './boot/axios';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 
 const app = createApp(App);
 

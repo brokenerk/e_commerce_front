@@ -23,16 +23,30 @@ export default {
       products: null,
     }
   },
+  computed: {
+    searchText() {
+      return this.$store.getters.searchText;
+    }
+  },
+  methods: {
+    async loadProducts() {
+      try {
+        const response = await this.$axios.get('/products?search=' + this.searchText);
+        this.products = response.data.products;
+      }
+      catch(e) {
+        // console.log(e);
+        this.$swal.fire("Error Loading Products", "Please try again later", "error");
+      }
+    }
+  },
+  watch: { 
+    searchText() {
+      this.loadProducts();
+    }
+  },
   async created() {
-    try {
-      
-      const response = await this.$axios.get('/products');
-      this.products = response.data.products;
-    }
-    catch(e) {
-      // console.log(e);
-      this.$swal.fire("Error Loading Products", "Please try again later", "error");
-    }
+    this.loadProducts();
   }
 };
 </script>
