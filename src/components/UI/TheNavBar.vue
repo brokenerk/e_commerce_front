@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
       <!--Brokenerk-->
-      <router-link class="nav-link text-white" to="/" @click="store.commit('setSearchText', '')">
+      <router-link class="nav-link text-white" to="/" @click="$store.commit('setSearchText', '')">
         <span class="navbar-brand mb-0 h1">E-Commerce</span>
       </router-link>
       <!--Boton responsive-->
