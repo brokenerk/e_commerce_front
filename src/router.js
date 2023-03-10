@@ -9,6 +9,7 @@ import Register from './pages/Register.vue';
 import Profile from './pages/Profile.vue';
 import Buy from './pages/Buy.vue';
 import NotFound from './pages/NotFound.vue';
+import Wishlist from './pages/Wishlist.vue';
 import store from './store/index.js';
 
 const router = createRouter({
@@ -23,6 +24,7 @@ const router = createRouter({
     { path: '/register', component: Register },
     { path: '/profile', component: Profile, meta: { requiresAuth: true} },
     { path: '/buy', component: Buy, meta: { requiresAuth: true} },
+    { path: '/wishlist', component: Wishlist, meta: { requiresAuth: true} },
     { path: '/:notFound', component: NotFound }
   ],
 });

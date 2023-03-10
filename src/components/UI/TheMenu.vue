@@ -4,6 +4,7 @@
     <div class="list-group">
       <router-link class="list-group-item text-danger" to="/products" @click="$store.commit('setSearchText', '')">Products</router-link>
       <router-link class="list-group-item text-danger" to="/profile" v-if="isLoggedIn">Profile</router-link>
+      <router-link class="list-group-item text-danger" to="/wishlist" v-if="isLoggedIn">Wishlist</router-link>
       <router-link class="list-group-item text-danger" to="/cart">Cart</router-link>
       <router-link class="list-group-item text-danger" to="/orders" v-if="isLoggedIn">Orders</router-link>
     </div>

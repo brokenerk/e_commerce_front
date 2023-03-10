@@ -51,6 +51,12 @@
           ></navbar-item>
 
           <navbar-item
+            v-if="isLoggedIn"
+            :to="'/wishlist'" 
+            :caption="'Wishlist'"
+          ></navbar-item>
+
+          <navbar-item
             :to="'/cart'" 
             :caption="'Cart'"
           ></navbar-item>

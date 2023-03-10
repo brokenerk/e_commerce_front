@@ -1,12 +1,13 @@
 <template>
   <div>
-    <h1 class="my-4">Products</h1>
+    <h1 class="my-4">Wishlist</h1>
     <div class="row">
       <product-card
         v-for="product in products"
         :key="product.id_product"
         :product="product"
-        :isWishlist="false"
+        :isWishlist="true"
+        @reloadWishlist="loadWishlist($event)"
       ></product-card>
     </div>
   </div>
@@ -24,30 +25,20 @@ export default {
       products: null,
     }
   },
-  computed: {
-    searchText() {
-      return this.$store.getters.searchText;
-    }
-  },
   methods: {
-    async loadProducts() {
+    async loadWishlist() {
       try {
-        const response = await this.$axios.get('/products?search=' + this.searchText);
-        this.products = response.data.products;
+        const response = await this.$axios.get('/wishlist');
+        this.products = response.data.wishlist;
       }
       catch(e) {
         // console.log(e);
-        this.$swal.fire("Error Loading Products", "Please try again later", "error");
+        this.$swal.fire("Error Loading Wishlist", "Please try again later", "error");
       }
     }
   },
-  watch: { 
-    searchText() {
-      this.loadProducts();
-    }
-  },
-  async created() {
-    this.loadProducts();
+  created() {
+    this.loadWishlist();
   }
 };
 </script>
