@@ -1,6 +1,11 @@
 <template>
   <div class="col-12 col-sm-6 col-md-4 col-lg-4" id="col-card">
-    <div class="card h-100">
+    <router-link 
+      :to="'/products/' + product.id_product" 
+      tag="div" 
+      class="card h-100"
+      style="text-decoration: none; color: inherit;"
+    >
       <img class="card-img-top" :src="require('./../../assets/images/products/'+ product.id_product +'.jpg')" width="100" alt=""/>
       <div class="card-body">
         <h4 class="card-title text-primary">
@@ -32,7 +37,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </router-link>
   </div>
 </template>
 

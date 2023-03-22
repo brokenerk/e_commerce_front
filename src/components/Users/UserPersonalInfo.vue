@@ -95,6 +95,9 @@
 
     <div class="form-group row" v-if="loadUser">
       <div class="col-md-2 col-lg-2">
+        <router-link class="btn btn-warning" to="/wishlist">My Wishlist</router-link>
+      </div>
+      <div class="col-md-2 col-lg-2">
         <router-link class="btn btn-info" to="/orders">My Orders</router-link>
       </div>
       <div class="col-md-4 col-lg-4">
