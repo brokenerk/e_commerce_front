@@ -26,9 +26,9 @@
         ></stars-rating>
       </div>
       <div class="col-md-6">
-        <button class="btn btn-warning buy-button">Add to Cart</button>
-        <button class="btn btn-dark buy-button">Buy Now</button>
-        <button class="btn btn-info buy-button">Add to Wishlist</button>
+        <button class="btn btn-warning buy-button" @click="addToCart(product.id_product, false)">Add to Cart</button>
+        <button class="btn btn-dark buy-button" @click="buyNow(product.id_product)">Buy Now</button>
+        <button class="btn btn-info buy-button" @click="addToWishlist(product.id_product)">Add to Wishlist</button>
       </div>
     </div>
 
@@ -69,6 +69,11 @@ export default {
       newQuestion: null
     }
   },
+  computed: {
+    isLoggedIn() {
+      return this.$store.getters.isAuthenticated;
+    }
+  },
   methods: {
     loadProduct() {
       this.product = null;
@@ -90,7 +95,53 @@ export default {
       .catch(() => {
         this.$swal.fire("Error Adding Question", "Please try again later", "error");
       });
-    }
+    },
+    buyNow(idProduct) {
+      if (!this.isLoggedIn) {
+        this.$router.replace('/login');
+      }
+      else {
+        this.addToCart(idProduct, true);
+      }
+    },
+    addToCart(idProduct, buyNow) {
+      if (!this.isLoggedIn) {
+        this.$router.replace('/login');
+      }
+      else {
+        this.$axios.post('/cart', {
+          "id_product": idProduct
+        })
+        .then(() => {
+          if (!buyNow)
+            this.$router.replace('/cart');
+          else
+            this.$router.replace('/buy');
+        })
+        .catch((error) => {
+          // console.log(error.response.data.message);
+          const errorMessage = error.response ? error.response.data.message : "Please try again later";
+          this.$swal.fire("Error Adding Product", errorMessage, "error");
+        });
+      }
+    },
+    async addToWishlist(idProduct) {
+      if (!this.isLoggedIn) {
+        this.$router.replace('/login');
+      }
+      else {
+        try {
+          const response = await this.$axios.post('/wishlist', {
+            "id_product": idProduct
+          });
+          this.$swal.fire(response.data.message, "", "info");
+        }
+        catch(e) {
+          // console.log(e);
+          this.$swal.fire("Error Adding Product", "Please try again later", "error");
+        }
+      }
+    },
   },
   created() {
     this.loadProduct();

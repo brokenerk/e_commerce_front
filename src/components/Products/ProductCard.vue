@@ -1,13 +1,18 @@
 <template>
   <div class="col-12 col-sm-6 col-md-4 col-lg-4" id="col-card">
-    <router-link 
-      :to="'/products/' + product.id_product" 
-      tag="div" 
-      class="card h-100"
-      style="text-decoration: none; color: inherit;"
-    >
-      <img class="card-img-top" :src="require('./../../assets/images/products/'+ product.id_product +'.jpg')" width="100" alt=""/>
-      <div class="card-body">
+    <div class="card h-100">
+      <router-link 
+        :to="'/products/' + product.id_product" 
+        style="text-decoration: none; color: inherit; width: 100%;"
+      >
+        <img class="card-img-top" :src="require('./../../assets/images/products/'+ product.id_product +'.jpg')" style="width: 100%;" alt=""/>
+      </router-link>
+      <router-link 
+        :to="'/products/' + product.id_product" 
+        tag="div" 
+        class="card-body"
+        style="text-decoration: none; color: inherit;"
+      >
         <h4 class="card-title text-primary">
           {{ product.tx_name }}
         </h4>
@@ -22,7 +27,7 @@
         <h5>Price: $ {{ product.real_price }}</h5>
         <!-- <p class="card-text">{{ product.tx_description }}</p> -->
         <h8>On Stock: {{ product.nu_stock }} remaining</h8>
-      </div>
+      </router-link>
       <div class="card-footer" v-if="isLoggedIn">
         <div class="row text-center">
           <div class="col">
@@ -37,7 +42,7 @@
           </div>
         </div>
       </div>
-    </router-link>
+    </div>
   </div>
 </template>
 

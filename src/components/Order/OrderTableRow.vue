@@ -1,6 +1,6 @@
 <template>
   <tr>
-    <td><img :src="require('./../../assets/images/products/'+ orderDetail.product.id_product +'.jpg')" style="width: 100%;"/></td>
+    <td><img :src="require('./../../assets/images/products/'+ orderDetail.product.id_product +'.jpg')" width="200"/></td>
     <td>{{ orderDetail.product.tx_name }}</td>
     <td>$ {{ orderDetail.product.real_price }}</td>
     <td>{{ orderDetail.nu_amount }}</td>

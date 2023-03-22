@@ -26,7 +26,7 @@
         <tr class="table-info">
           <td scope="col"><b>Total</b></td>
           <td></td>
-          <td style="width:19%"><b>$ {{ total }}</b></td>
+          <td style="width: 19%;"><b>$ {{ total }}</b></td>
           <td></td>
           <td></td>
           <td></td>
