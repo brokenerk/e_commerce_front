@@ -50,18 +50,37 @@
 
     <br/><br/>
     <h4>Reviews</h4>
-
+    <div class="row">
+      <div class="col-lg-4 col-md-4">
+        <stars-card
+          :totalReviews="product.reviews.length"
+          :totalStars="product.stars"
+          :arrayStars="product.stars_array"
+        ></stars-card>
+      </div>
+      <div class="col-lg-8 col-md-8">
+        <review-card
+          v-for="review in product.reviews"
+          :key="review.id_review"
+          :review="review"
+        ></review-card>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import QuestionCard from '../components/Products/QuestionCard.vue';
+import ReviewCard from '../components/Products/ReviewCard.vue';
+import StarsCard from '../components/Products/StarsCard.vue';
 import StarsRating from '../components/Products/StarsRating.vue';
 
 export default {
   components: {
     StarsRating,
-    QuestionCard
+    QuestionCard,
+    StarsCard,
+    ReviewCard
   },
   data() {
     return {
