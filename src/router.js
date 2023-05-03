@@ -11,6 +11,7 @@ import Profile from './pages/Profile.vue';
 import Buy from './pages/Buy.vue';
 import NotFound from './pages/NotFound.vue';
 import Wishlist from './pages/Wishlist.vue';
+import Review from './pages/Review.vue';
 import store from './store/index.js';
 
 const router = createRouter({
@@ -27,6 +28,7 @@ const router = createRouter({
     { path: '/profile', component: Profile, meta: { requiresAuth: true} },
     { path: '/buy', component: Buy, meta: { requiresAuth: true} },
     { path: '/wishlist', component: Wishlist, meta: { requiresAuth: true} },
+    { path: '/review/:id', component: Review, meta: { requiresAuth: true} },
     { path: '/:notFound', component: NotFound }
   ],
 });
