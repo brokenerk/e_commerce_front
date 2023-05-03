@@ -3,9 +3,12 @@
     <ul class="list-group">
       <li class="list-group-item">
         <span class="text-secondary">By {{ review.username }}</span>
-        <stars-rating
-          :stars="review.stars"
-        ></stars-rating>
+        <star-rating 
+          :star-size="21" 
+          :rating="review.stars" 
+          :read-only="true"
+          :increment="0.5"
+        ></star-rating>
         <small>From {{ review.country }} on {{ review.creation_date }}</small>
         <p>{{ review.description }}</p>
       </li>
@@ -15,12 +18,12 @@
 </template>
 
 <script>
-import StarsRating from './StarsRating.vue';
+import StarRating from 'vue-star-rating';
 
 export default {
   props: ["review"],
   components: {
-    StarsRating
+    StarRating
   }
 };
 </script>

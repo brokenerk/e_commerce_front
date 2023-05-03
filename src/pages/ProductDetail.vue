@@ -19,11 +19,14 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-6 text-center">
+      <div class="col-md-6 d-flex justify-content-center">
         <br/>
-        <stars-rating
-          :stars="product.stars"
-        ></stars-rating>
+        <star-rating 
+          :star-size="30" 
+          :rating="product.stars" 
+          :read-only="true"
+          :increment="0.5"
+        ></star-rating>
       </div>
       <div class="col-md-6">
         <button class="btn btn-warning buy-button" @click="addToCart(product.id_product, false)">Add to Cart</button>
@@ -73,11 +76,11 @@
 import QuestionCard from '../components/Products/QuestionCard.vue';
 import ReviewCard from '../components/Products/ReviewCard.vue';
 import StarsCard from '../components/Products/StarsCard.vue';
-import StarsRating from '../components/Products/StarsRating.vue';
+import StarRating from 'vue-star-rating';
 
 export default {
   components: {
-    StarsRating,
+    StarRating,
     QuestionCard,
     StarsCard,
     ReviewCard

@@ -1,8 +1,11 @@
 <template>
   <div>
-    <stars-rating
-      :stars="totalStars"
-    ></stars-rating>
+    <star-rating 
+      :star-size="27" 
+      :rating="totalStars" 
+      :read-only="true"
+      :increment="0.5"
+    ></star-rating>
 
     <p>{{ totalReviews }} total reviews</p>
 
@@ -50,12 +53,12 @@
 </template>
 
 <script>
-import StarsRating from './StarsRating.vue';
+import StarRating from 'vue-star-rating';
 
 export default {
   props: ["totalReviews", "totalStars", "arrayStars"],
   components: {
-    StarsRating
+    StarRating
   }
 };
 </script>

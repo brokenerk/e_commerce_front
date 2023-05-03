@@ -16,6 +16,14 @@
         <h4 class="card-title text-primary">
           {{ product.tx_name }}
         </h4>
+        <star-rating 
+          :star-size="21" 
+          :rating="product.stars" 
+          :read-only="true"
+          :increment="0.5"
+        ></star-rating>
+        <br/>
+        
         <div class="row">
           <div class="col-lg-6 col-md-9 mb-6">
             <h8>$ {{ product.ft_price }}</h8>
@@ -47,7 +55,11 @@
 </template>
 
 <script>
+import StarRating from 'vue-star-rating';
 export default {
+  components: {
+    StarRating
+  },
   props: [
     "product", "isWishlist"
   ],
