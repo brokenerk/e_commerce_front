@@ -1,5 +1,5 @@
 <template>
-  <div v-if="order">
+  <div class="my-4" v-if="order">
     <h1 class="my-4">Order ID: {{ order.id_order }}</h1>
 		<div>
       <label>Purchased on: {{ order.fh_date }}</label>
@@ -11,6 +11,10 @@
       :isOrder="true"
     ></order-table>
 
+    <payment-info
+      :payment="order.payment"
+    ></payment-info>
+
     <br/>
     <router-link class="btn btn-info" to="/orders">Return to orders</router-link>
 
@@ -19,11 +23,13 @@
 
 <script>
 import OrderTable from '../components/Order/OrderTable.vue';
+import PaymentInfo from '../components/Order/PaymentInfo.vue';
 
 
 export default {
   components: {
-    OrderTable
+    OrderTable,
+    PaymentInfo
   },
   data() {
     return {

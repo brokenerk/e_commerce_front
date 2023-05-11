@@ -1,5 +1,5 @@
 <template>
-  <div v-if="cart">
+  <div class="my-4" v-if="cart">
     <h1 class="my-4">Your Cart - Order ID: {{ cart.id_order }}</h1>
 		<div>
       <label>Updated: {{ cart.fh_date }}</label>

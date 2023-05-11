@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="my-4">
     <h1 class="my-4">My Profile</h1>
     <user-personal-info
       :loadUser="true"

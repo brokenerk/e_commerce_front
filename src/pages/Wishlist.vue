@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="my-4">
     <h1 class="my-4">Wishlist</h1>
     <div class="row">
       <product-card

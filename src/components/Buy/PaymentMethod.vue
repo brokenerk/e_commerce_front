@@ -28,16 +28,21 @@ export default {
             return response.data.id;
           },
           onApprove: async (data) => {
-            const response = await this.$axios.post('/buy', {
+            // const orderData = response.data;
+            this.$axios.post('/buy', {
               "paypal_order_id": data.orderID
-            });
-            const orderData = response.data;
-
-            this.$axios.put('/buy')
-            .then(() => {
-              this.$swal.fire("Order Purchased", "", "success");
-              console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
-              this.$emit('setPurchased');
+            }).then(() => {
+              this.$axios.put('/buy')
+              .then(() => {
+                this.$swal.fire("Order Purchased", "", "success");
+                // console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+                this.$emit('setPurchased');
+              })
+              .catch((error) => {
+                const errorMessage = error.response ? error.response.data.message : "Please try again later";
+                this.$swal.fire("Error Purchasing Order", errorMessage, "error");
+                // console.log(error.response.data.message);
+              });
             })
             .catch((error) => {
               const errorMessage = error.response ? error.response.data.message : "Please try again later";

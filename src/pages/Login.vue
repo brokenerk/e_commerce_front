@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="my-4">
     <h1 class="my-4 text-center">Login</h1>
 
     <div class="form-group row">
