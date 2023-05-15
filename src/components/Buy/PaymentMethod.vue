@@ -2,13 +2,13 @@
   <div class="card">
     <div class="card-body">
       <h5 class="card-title text-primary">Payment Method</h5>
-			<span class="card-errors text-danger"></span>
+      <span class="card-errors text-danger"></span>
 
       <div class="row" style="padding:10px;">
         <img src="./../../assets/images/credit-cards.png" style="width: 100%;"/>
       </div>
 
-      <div id="paypal"></div>
+      <div ref="paypal"></div>
     </div>
   </div>
 </template>
@@ -19,6 +19,12 @@ export default {
   props: [
     "total", "orderDetails"
   ],
+  mounted() {
+    const script = document.createElement("script");
+    script.src = "https://www.paypal.com/sdk/js?client-id=AXGDhQQsjcwZym6y04KUASw4IDZ7v2F4ypSTrN30Rc8_0XtKH4fMbZAZsAhhjQrq0iAwb2_pTbQqUmR9&currency=MXN";
+    script.addEventListener("load", this.loadPaypal);
+    document.body.appendChild(script);
+  },
   methods: {
     loadPaypal() {
       window.paypal
@@ -56,14 +62,8 @@ export default {
             // console.log(error.response.data.message);
           }
         })
-        .render("#paypal");
+        .render(this.$refs.paypal);
       }
-  },
-  mounted() {
-    const script = document.createElement("script");
-    script.src = "https://www.paypal.com/sdk/js?client-id=AXGDhQQsjcwZym6y04KUASw4IDZ7v2F4ypSTrN30Rc8_0XtKH4fMbZAZsAhhjQrq0iAwb2_pTbQqUmR9&currency=MXN";
-    script.addEventListener("load", this.loadPaypal);
-    document.body.appendChild(script);
   },
 };
 </script>
